@@ -20,7 +20,6 @@ calculateBtn.addEventListener("click", function (e) {
 resetBtn.addEventListener("click", function (e) {
     roundingValue.value = "";
     inputValue.value = "";
-    alert("click");
 });
 
 // rounding function
