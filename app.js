@@ -10,12 +10,18 @@ const resetBtn = document.getElementById("reset");
 // Event listener logic for calculate button or enter key
 calculateBtn.addEventListener("click", function (e) {
     // execute rounding function
-    // if (inputValue.value !== "" && inputValue.value < 0)
-    roundingCalc(inputValue.value, roundingValue.value);
+    if (inputValue.value !== "" && inputValue.value > 0) {
+        roundingCalc(inputValue.value, roundingValue.value);
+    }
 });
 
 // Event listener logic for enter key within input MAYBE
 // Event listener logic for reset button
+resetBtn.addEventListener("click", function (e) {
+    roundingValue.value = "";
+    inputValue.value = "";
+    alert("click");
+});
 
 // rounding function
 function roundingCalc(inputVal, roundingVal) {
