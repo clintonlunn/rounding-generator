@@ -74,15 +74,18 @@ function roundingCalc(inputVal, roundingVal) {
     const baseNum = inputVal - remainder;
     roundingVal = parseInt(roundingVal);
 
-    if ((remainder >= (roundingVal / 2))) {
+    if (remainder >= (roundingVal / 2)) {
         // round up
         resultsValue.value = baseNum + roundingVal
+
+    } else if (baseNum < (roundingVal / 2)) {
+        // round up
+        resultsValue.value = roundingVal;
 
     } else {
         // round down
         resultsValue.value = baseNum
     }
-
 
 
 }
