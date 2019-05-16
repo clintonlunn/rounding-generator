@@ -8,11 +8,6 @@ const calculateBtn = document.getElementById("calculate");
 const resetBtn = document.getElementById("reset");
 
 function checkValidity() {
-
-}
-
-// Event listener logic for calculate button or enter key
-calculateBtn.addEventListener("click", function (e) {
     // execute rounding function
     if (inputValue.value !== "" && inputValue.value > 0 && roundingValue.value !== "" && roundingValue.value > 0) {
         roundingCalc(inputValue.value, roundingValue.value);
@@ -38,17 +33,39 @@ calculateBtn.addEventListener("click", function (e) {
             roundingValue.classList.add("is-invalid");
         }
     }
+}
+
+// Event listener logic for calculate button or enter key
+calculateBtn.addEventListener("click", function (e) {
+    checkValidity();
 });
 
-// Event listener logic for enter key within input MAYBE
-inputValue.addEventListener("submit", function (e) {
+// Event listener logic for enter key within submittable input
+const submittableInputs = document.getElementsByClassName("submittable");
 
-});
+// looop through submittable inputs to listen for enter key
+for (let input of submittableInputs) {
+    input.addEventListener("keyup", function (e) {
+        if (e.code === "Enter") {
+            checkValidity();
+        }
+    });
+}
 
 // Event listener logic for reset button
 resetBtn.addEventListener("click", function (e) {
-    roundingValue.value = "";
-    inputValue.value = "";
+    // loop through inputs for reset
+    const inputs = document.getElementsByTagName("input");
+    for (let input of inputs) {
+        input.value = "";
+    }
+
+    // reset validity classes
+    const submittableInputs = document.getElementsByClassName("submittable");
+    for (let input of submittableInputs) {
+        input.classList.remove("is-invalid");
+        input.classList.remove("is-valid");
+    }
 });
 
 // rounding function
